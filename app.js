@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const express = require("express");
-const axios = require('axios');
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const Shopify = require("shopify-api-node");
