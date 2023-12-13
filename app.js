@@ -146,15 +146,16 @@ app.get("/shopify-get-events", async (req, res) => {
   }
 });
 
-app.get("/apps/express-proxy", (req, res) => {
-  res.send("hello");
-});
+// app.get("/", (req, res) => {
+//   res.send("hello");
+// });
 
 // Your Shopify App Proxy path
 const proxyPath = '/apps/express-proxy';
 
 app.get(proxyPath, async (req, res) => {
   try {
+  res.send("hello");
     // Extract shop domain and access token from request
     const shop = req.query.shop;
     console.log("shopify shop==================",shop);
