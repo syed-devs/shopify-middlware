@@ -146,7 +146,7 @@ app.get("/shopify-get-events", async (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
+app.get("/apps/express-proxy", (req, res) => {
   res.send("hello");
 });
 
