@@ -147,7 +147,7 @@ app.get("/shopify-get-events", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("hello");
+  res.send("hello Test");
 });
 
 app.post("/webhooks/customer/create", async (req, res) => {
