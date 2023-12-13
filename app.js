@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const express = require("express");
+const axios = require('axios');
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const Shopify = require("shopify-api-node");
@@ -147,9 +148,33 @@ app.get("/shopify-get-events", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
+  res.send("hello");
+});
+
 // Your Shopify App Proxy path
-  const proxyPath = '/apps/express-proxy';
-  res.send(proxyPath);
+const proxyPath = '/apps/express-proxy';
+
+app.get(proxyPath, async (req, res) => {
+  try {
+    // Extract shop domain and access token from request
+    const shop = req.query.shop;
+    console.log("shopify shop==================",shop);
+    const accessToken = req.query.access_token;
+    console.log("shopify accessToken==================",accessToken);
+
+    // Make API call to fetch customer data
+    const customerResponse = await axios.get(`https://${shop}/admin/api/2021-10/customers.json`, {
+      headers: {
+        'X-Shopify-Access-Token': accessToken,
+      },
+    });
+
+    const customers = customerResponse.data.customers;
+    console.log("shopify customers==================",customers);
+    res.json(customers);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 
