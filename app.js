@@ -147,8 +147,12 @@ app.get("/shopify-get-events", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("hello Test");
+// Your Shopify App Proxy path
+  const proxyPath = '/apps/express-proxy';
+  res.send(proxyPath);
 });
+
+
 
 app.post("/webhooks/customer/create", async (req, res) => {
   const customerData = req.body;
