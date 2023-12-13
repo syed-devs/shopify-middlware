@@ -150,7 +150,11 @@ app.get("/shopify-get-events", async (req, res) => {
    res.send("hello");
  });
 
-
+// Example: Expose a less secure endpoint for use in the theme
+app.get('/express-proxy', async (req, res) => {
+  // Your logic here
+  res.json({ message: 'This is a public endpoint for the theme.' });
+});
 
 app.post("/webhooks/customer/create", async (req, res) => {
   const customerData = req.body;
